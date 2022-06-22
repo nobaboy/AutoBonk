@@ -28,10 +28,10 @@ public class AutoBonkToggle extends CommandBase {
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if(!isToggled) {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "AutoBonk " + EnumChatFormatting.DARK_GRAY + "> " + EnumChatFormatting.GREEN + "AutoBonk is now enabled."));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[AutoBonk] " + EnumChatFormatting.GREEN + "enabled."));
             isToggled = true;
         } else {
-            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "AutoBonk " + EnumChatFormatting.DARK_GRAY + "> " + EnumChatFormatting.RED + "AutoBonk is now disabled."));
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[AutoBonk] " + EnumChatFormatting.RED + "disabled."));
             isToggled = false;
         }
     }

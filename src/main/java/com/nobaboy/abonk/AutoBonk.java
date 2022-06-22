@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, acceptedMinecraftVersions = "[1.8.9]")
 public class AutoBonk
 {
     private int boopNumber = 0;
@@ -48,7 +48,7 @@ public class AutoBonk
                 boopNumber = 1;
             } else {
                 boopNumber++;
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/gc Bonk!");
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("/gc Bonk! x" + boopNumber);
                 Minecraft.getMinecraft().thePlayer.playSound("abonk:bonk", 1.0F, 1.0F);
             }
         }
@@ -62,7 +62,7 @@ public class AutoBonk
                 boopNumber = 1;
             } else {
                 boopNumber++;
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/pc Bonk!");
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("/pc Bonk! x" + boopNumber);
                 Minecraft.getMinecraft().thePlayer.playSound("abonk:bonk", 1.0F, 1.0F);
             }
         }
@@ -91,7 +91,7 @@ public class AutoBonk
                 boopNumber = 1;
             } else {
                 boopNumber++;
-                Minecraft.getMinecraft().thePlayer.sendChatMessage("/r Bonk!");
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("/r Bonk! x" + boopNumber);
                 Minecraft.getMinecraft().thePlayer.playSound("abonk:bonk", 1.0F, 1.0F);
             }
         }
