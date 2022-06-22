@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "abonk",
+    "name": "AutoBonk",
+    "description": "A mod that makes you instantly reply with 'Bonk!' to the person that 'Boop!'s you on the Hypixel Network.",
+    "version": "0.9.6",
+    "mcversion": "1.8.9",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["nobaboy"],
+    "credits": "All to nobaboy (Boba Man).",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
