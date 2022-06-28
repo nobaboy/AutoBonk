@@ -45,7 +45,7 @@ public class AutoBonk
             if (boopNumber == 0) {
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/gc Bonk!");
                 Minecraft.getMinecraft().thePlayer.playSound("abonk:bonk", 1.0F, 1.0F);
-                boopNumber = 1;
+                boopNumber++;
             } else {
                 boopNumber++;
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/gc Bonk! x" + boopNumber);
@@ -59,7 +59,7 @@ public class AutoBonk
             if (boopNumber == 0) {
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/pc Bonk!");
                 Minecraft.getMinecraft().thePlayer.playSound("abonk:bonk", 1.0F, 1.0F);
-                boopNumber = 1;
+                boopNumber++;
             } else {
                 boopNumber++;
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/pc Bonk! x" + boopNumber);
@@ -88,7 +88,7 @@ public class AutoBonk
             if (boopNumber == 0) {
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/r Bonk!");
                 Minecraft.getMinecraft().thePlayer.playSound("abonk:bonk", 1.0F, 1.0F);
-                boopNumber = 1;
+                boopNumber++;
             } else {
                 boopNumber++;
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/r Bonk! x" + boopNumber);
