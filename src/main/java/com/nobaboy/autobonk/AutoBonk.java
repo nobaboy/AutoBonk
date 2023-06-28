@@ -9,6 +9,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,16 +46,16 @@ public class AutoBonk
         if(!checkForMessage) return;
         switch(type) {
             case "Guild":
-                command = "/gc";
+                command = "gc";
                 break;
             case "Party":
-                command = "/pc";
+                command = "pc";
                 break;
             case "From":
-                command = "/r";
+                command = "r";
                 break;
             case "Co-op":
-                command = "/cc";
+                command = "cc";
                 break;
             default:
                 System.out.println("[AutoBonk] Chat matched without detecting type.");
@@ -66,8 +67,9 @@ public class AutoBonk
             Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk!");
             Minecraft.getMinecraft().thePlayer.playSound("autobonk:bonk", 1.0F, 1.0F);
         } else {
+            String alphanumericString = RandomStringUtils.randomAlphanumeric(6);
             boopNumber++;
-            Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk! x" + boopNumber);
+            Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk! x" + boopNumber + " @" + alphanumericString);
             Minecraft.getMinecraft().thePlayer.playSound("autobonk:bonk", 10.0F, 1.0F);
         }
     }
