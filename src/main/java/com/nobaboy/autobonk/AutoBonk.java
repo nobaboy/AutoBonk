@@ -46,16 +46,16 @@ public class AutoBonk
         if(!checkForMessage) return;
         switch(type) {
             case "Guild":
-                command = "gc";
+                command = "/gc";
                 break;
             case "Party":
-                command = "pc";
+                command = "/pc";
                 break;
             case "From":
-                command = "r";
+                command = "/r";
                 break;
             case "Co-op":
-                command = "cc";
+                command = "/cc";
                 break;
             default:
                 System.out.println("[AutoBonk] Chat matched without detecting type.");
