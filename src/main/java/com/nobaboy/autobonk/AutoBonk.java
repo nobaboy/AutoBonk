@@ -13,12 +13,12 @@ import org.apache.commons.lang3.RandomStringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Mod(modid = "autobonk", name = "AutoBonk", version = "1.3.3", acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = "autobonk", name = "AutoBonk", version = "1.3.4", acceptedMinecraftVersions = "[1.8.9]")
 public class AutoBonk
 {
     public static final String MOD_ID = "autobonk";
     public static final String MOD_NAME = "AutoBonk";
-    public static final String MOD_VERSION = "1.3.3";
+    public static final String MOD_VERSION = "1.3.4";
 
     private int boopNumber = 1;
     private final String playerIGN = Minecraft.getMinecraft().getSession().getUsername();

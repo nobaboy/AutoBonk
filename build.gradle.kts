@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.nobaboy.autobonk"
-version = "1.3.3"
+version = "1.3.4"
 
 // Toolchains:
 java {
