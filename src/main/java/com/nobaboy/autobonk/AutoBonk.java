@@ -1,6 +1,5 @@
 package com.nobaboy.autobonk;
 
-import com.nobaboy.autobonk.util.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -14,9 +13,13 @@ import org.apache.commons.lang3.RandomStringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = "autobonk", name = "AutoBonk", version = "1.3.3", acceptedMinecraftVersions = "[1.8.9]")
 public class AutoBonk
 {
+    public static final String MOD_ID = "autobonk";
+    public static final String MOD_NAME = "AutoBonk";
+    public static final String MOD_VERSION = "1.3.3";
+
     private int boopNumber = 1;
     private final String playerIGN = Minecraft.getMinecraft().getSession().getUsername();
 
@@ -58,19 +61,19 @@ public class AutoBonk
                 command = "/cc";
                 break;
             default:
-                System.out.println("[AutoBonk] Chat matched without detecting type.");
+                System.out.println("[" + MOD_NAME + "] Chat matched without detecting type.");
                 return;
         }
         if(realIGN.equals(playerIGN)) return;
         if (boopNumber == 1) {
             boopNumber++;
             Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk!");
-            Minecraft.getMinecraft().thePlayer.playSound("autobonk:bonk", 1.0F, 1.0F);
+            Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 1.0F, 1.0F);
         } else {
             String alphanumericString = RandomStringUtils.randomAlphanumeric(6);
             boopNumber++;
             Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk! x" + boopNumber + " @" + alphanumericString);
-            Minecraft.getMinecraft().thePlayer.playSound("autobonk:bonk", 10.0F, 1.0F);
+            Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 10.0F, 1.0F);
         }
     }
 }
