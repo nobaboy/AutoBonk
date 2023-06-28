@@ -71,7 +71,6 @@ public class AutoBonk
                 return;
         }
         if (boopNumber == 1) {
-            boopNumber++;
             Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk!");
             Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 1.0F, 1.0F);
         } else {
