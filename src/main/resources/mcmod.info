@@ -1,16 +1,16 @@
 [
   {
-    "modid": "${modid}",
-    "name": "Xample Mod",
-    "description": "A mod that is used as an example.",
-    "version": "${version}",
+    "modid": "autobonk",
+    "name": "AutoBonk",
+    "description": "A mod that makes you instantly reply with 'Bonk!' to the person that 'Boop!'s you on the Hypixel Network.",
+    "version": "1.3.3",
     "mcversion": "1.8.9",
-    "url": "https://github.com/romangraef/Forge1.8.9Template/",
+    "url": "https://github.com/nobaboy/AutoBonk/",
     "updateUrl": "",
     "authorList": [
-      "You"
+      "nobaboy"
     ],
-    "credits": "",
+    "credits": "celxste for helping with Regex, some non that I forgot their name, walkerselby and romangraef for the Template.",
     "logoFile": "",
     "screenshots": [],
     "dependencies": []

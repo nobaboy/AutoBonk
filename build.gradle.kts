@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "com.nobaboy.autobonk"
-version = "1.32"
+version = "1.3.3"
 
 // Toolchains:
 java {
@@ -85,7 +85,7 @@ tasks.shadowJar {
     }
 
     // If you want to include other dependencies and shadow them, you can relocate them in here
-    fun relocate(name: String) = relocate(name, "com.examplemod.deps.$name")
+    //fun relocate(name: String) = relocate(name, "com.examplemod.deps.$name")
 }
 
 tasks.assemble.get().dependsOn(tasks.remapJar)
