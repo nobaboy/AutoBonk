@@ -13,12 +13,15 @@ import org.apache.commons.lang3.RandomStringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Mod(modid = "autobonk", name = "AutoBonk", version = "1.3.4", acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = "autobonk", name = "AutoBonk", version = "1.3.5", acceptedMinecraftVersions = "[1.8.9]")
 public class AutoBonk
 {
     public static final String MOD_ID = "autobonk";
     public static final String MOD_NAME = "AutoBonk";
-    public static final String MOD_VERSION = "1.3.4";
+    public static final String MOD_VERSION = "1.3.5";
+    public static final String MOD_PREFIX = EnumChatFormatting.GRAY + "[AutoBonk] ";
+
+    Pattern chatPattern = Pattern.compile("^(?<type>Party|Guild|From|Co-op)(?: >)? (?:\\[[A-Z+]+\\] )?(?<username>[A-z0-9_]+)(?: \\[[A-z0-9 ]+\\])?: (?<message>.+)");
 
     private int boopNumber = 0;
     private final String playerIGN = Minecraft.getMinecraft().getSession().getUsername();
@@ -26,58 +29,37 @@ public class AutoBonk
     @Mod.EventHandler
     public void init(final FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
-        ClientCommandHandler.instance.registerCommand(new AutoBonkToggle());
-        ClientCommandHandler.instance.registerCommand(new DebugCommand());
+        ClientCommandHandler.instance.registerCommand(new AutoBonkCommands());
     }
 
     @SubscribeEvent
     public void onChatReceived(final ClientChatReceivedEvent e) {
-        String message = EnumChatFormatting.getTextWithoutFormattingCodes(e.message.getUnformattedText());
+        if(!AutoBonkCommands.mainToggle) return;
+        String receivedMessage = EnumChatFormatting.getTextWithoutFormattingCodes(e.message.getUnformattedText());
+        Matcher chatMatcher = chatPattern.matcher(receivedMessage);
+        if(!chatMatcher.find()) return;
 
-        Pattern chatPattern = Pattern.compile("^(?<type>Party|Guild|From|Co-op)(?: >)? (?<rank>\\[[A-Z+]+\\] )?(?<username>[A-z0-9_]+)(?<grank> \\[[A-z0-9 ]+\\])?: (?<message>.+)");
-        Matcher chatMatcher = chatPattern.matcher(message);
-
-        if (!chatMatcher.find()) return;
         String type = chatMatcher.group("type");
-        String realMessage = chatMatcher.group("message");
-        String realIGN = chatMatcher.group("username");
-
-        final boolean checkForMessage = realMessage.toLowerCase().contains("boop");
-
-        String command;
-
-        if(!AutoBonkToggle.isModToggled) return;
-        if(!checkForMessage) return;
-        if(realIGN.equals(playerIGN)) return;
+        String message = chatMatcher.group("message");
+        String sender = chatMatcher.group("username");
+        if(!message.toLowerCase().contains("boop") || sender.equals(playerIGN)) return;
 
         String alphanumericString = RandomStringUtils.randomAlphanumeric(6);
-        if(DebugCommand.isDebugToggled) System.out.println("[" + MOD_NAME + "] Matched in [" + type + "], boop sent by " + realIGN);
+        if(AutoBonkCommands.debugMode) System.out.println("[" + MOD_NAME + "] Matched in [" + type + "], boop sent by " + sender);
 
-        switch(type) {
-            case "Guild":
-                command = "/gc";
-                break;
-            case "Party":
-                command = "/pc";
-                break;
-            case "From":
-                command = "/r";
-                break;
-            case "Co-op":
-                command = "/cc";
-                break;
-            default:
-                System.out.println("[" + MOD_NAME + "] Chat matched without detecting type.");
-                return;
+        String command = type.equals("Guild") ? "/gc"
+                : type.equals("Party") ? "/pc"
+                : type.equals("From") ? "/r"
+                : type.equals("Co-op") ? "/cc"
+                : null;
+
+        if(command == null) {
+            System.out.println("[" + MOD_NAME + "] Matched message in unknown channel: " + type);
+            return;
         }
-        if (boopNumber == 0) {
-            boopNumber++;
-            Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk!");
-            Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 1.0F, 1.0F);
-        } else {
-            boopNumber++;
-            Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk! x" + boopNumber + " @" + alphanumericString);
-            Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 10.0F, 1.0F);
-        }
+
+        boopNumber++;
+        Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk!" + (boopNumber == 0 ? "" : " x" + boopNumber + " - @" + alphanumericString));
+        Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 1.0F, 1.0F);
     }
 }
