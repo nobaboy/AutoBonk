@@ -20,7 +20,7 @@ public class AutoBonk
     public static final String MOD_NAME = "AutoBonk";
     public static final String MOD_VERSION = "1.3.4";
 
-    private int boopNumber = 1;
+    private int boopNumber = 0;
     private final String playerIGN = Minecraft.getMinecraft().getSession().getUsername();
 
     @Mod.EventHandler
@@ -70,7 +70,8 @@ public class AutoBonk
                 System.out.println("[" + MOD_NAME + "] Chat matched without detecting type.");
                 return;
         }
-        if (boopNumber == 1) {
+        if (boopNumber == 0) {
+            boopNumber++;
             Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk!");
             Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 1.0F, 1.0F);
         } else {
