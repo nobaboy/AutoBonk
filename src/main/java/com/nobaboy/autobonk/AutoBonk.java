@@ -27,6 +27,7 @@ public class AutoBonk
     public void init(final FMLInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         ClientCommandHandler.instance.registerCommand(new AutoBonkToggle());
+        ClientCommandHandler.instance.registerCommand(new DebugCommand());
     }
 
     @SubscribeEvent
@@ -45,8 +46,13 @@ public class AutoBonk
 
         String command;
 
-        if(!AutoBonkToggle.isToggled) return;
+        if(!AutoBonkToggle.isModToggled) return;
         if(!checkForMessage) return;
+        if(realIGN.equals(playerIGN)) return;
+
+        String alphanumericString = RandomStringUtils.randomAlphanumeric(6);
+        if(DebugCommand.isDebugToggled) System.out.println("[" + MOD_NAME + "] Matched in [" + type + "], boop sent by " + realIGN);
+
         switch(type) {
             case "Guild":
                 command = "/gc";
@@ -64,13 +70,11 @@ public class AutoBonk
                 System.out.println("[" + MOD_NAME + "] Chat matched without detecting type.");
                 return;
         }
-        if(realIGN.equals(playerIGN)) return;
         if (boopNumber == 1) {
             boopNumber++;
             Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk!");
             Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 1.0F, 1.0F);
         } else {
-            String alphanumericString = RandomStringUtils.randomAlphanumeric(6);
             boopNumber++;
             Minecraft.getMinecraft().thePlayer.sendChatMessage(command + " Bonk! x" + boopNumber + " @" + alphanumericString);
             Minecraft.getMinecraft().thePlayer.playSound(MOD_ID + ":bonk", 10.0F, 1.0F);

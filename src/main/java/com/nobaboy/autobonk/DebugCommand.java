@@ -6,9 +6,8 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
-public class AutoBonkToggle extends CommandBase {
-
-    public static boolean isModToggled = true;
+public class DebugCommand extends CommandBase {
+    public static boolean isDebugToggled = false;
 
     public boolean canCommandSenderUseCommand(ICommandSender sender) {
         return true;
@@ -16,22 +15,22 @@ public class AutoBonkToggle extends CommandBase {
 
     @Override
     public String getCommandName() {
-        return "autobonktoggle";
+        return "autobonkdebug";
     }
 
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "Usage: On or Off toggle for AutoBonk.";
+        return "Usage: Debug toggle for AutoBonk.";
     }
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-        if(!isModToggled) {
-            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[AutoBonk] " + EnumChatFormatting.GREEN + "enabled."));
-            isModToggled = true;
+        if(!isDebugToggled) {
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[AutoBonk] " + EnumChatFormatting.GREEN + "Debug Mode on."));
+            isDebugToggled = true;
         } else {
-            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[AutoBonk] " + EnumChatFormatting.RED + "disabled."));
-            isModToggled = false;
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GRAY + "[AutoBonk] " + EnumChatFormatting.RED + "Debug Mode off."));
+            isDebugToggled = false;
         }
     }
 }
