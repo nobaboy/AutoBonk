@@ -21,7 +21,7 @@ public class AutoBonk
     public static final String MOD_VERSION = "1.3.6";
     public static final String MOD_PREFIX = EnumChatFormatting.GRAY + "[AutoBonk] ";
 
-    Pattern chatPattern = Pattern.compile("^(?<type>Party|Guild|From|Co-op)(?: >)? (?:\\[[A-Z+]+\\] )?(?<username>[A-z0-9_]+)(?: \\[[A-z0-9 ]+\\])?: (?<message>.+)");
+    Pattern chatPattern = Pattern.compile("^(?<type>Party|Guild|From|Co-op)(?: >)? (?:\\[[A-Z+]+] )?(?<username>[A-z0-9_]+)(?: \\[[A-z0-9 ]+])?: (?<message>.+)");
 
     private int boopNumber = 0;
     private final String playerIGN = Minecraft.getMinecraft().getSession().getUsername();
