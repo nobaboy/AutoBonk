@@ -13,12 +13,12 @@ import org.apache.commons.lang3.RandomStringUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Mod(modid = "autobonk", name = "AutoBonk", version = "1.3.5", acceptedMinecraftVersions = "[1.8.9]")
+@Mod(modid = "autobonk", name = "AutoBonk", version = "1.3.6", acceptedMinecraftVersions = "[1.8.9]")
 public class AutoBonk
 {
     public static final String MOD_ID = "autobonk";
     public static final String MOD_NAME = "AutoBonk";
-    public static final String MOD_VERSION = "1.3.5";
+    public static final String MOD_VERSION = "1.3.6";
     public static final String MOD_PREFIX = EnumChatFormatting.GRAY + "[AutoBonk] ";
 
     Pattern chatPattern = Pattern.compile("^(?<type>Party|Guild|From|Co-op)(?: >)? (?:\\[[A-Z+]+\\] )?(?<username>[A-z0-9_]+)(?: \\[[A-z0-9 ]+\\])?: (?<message>.+)");
